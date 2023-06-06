@@ -1,6 +1,6 @@
 .head {
-    background: #ffffff;
-    box-shadow: 0 15px 25px rgba(175, 173, 173, 0.6);
+    background: #b6b6b6;
+    box-shadow: 0 15px 25px rgba(0, 0, 0, 0.6);
     margin: -10px;
     padding: 10px;
   }
@@ -11,55 +11,51 @@
     margin-left: 0.5in;
   }
 
-  .s-box {
+  .login-box {
+    margin: auto;
+    margin-top: 1in;
+    width: 4in;
+    padding: 0.4in;
     background-color: white;
     box-shadow: 5px 5px 5px 5px rgba(0, 0, 0, 0.1);
     border-radius: 10px;
-    width: 5in;
-    padding: 0.3in;
-    margin: auto;
-    margin-top: 1in;
   }
   
-  .s-box h2 {
+  .login-box h2 {
     color: black;
     text-align: center;
   }
   
-  .s-box .sindiv input {
+  .login-box .indiv input {
     width: 100%;
     padding: 10px 0;
     color: rgb(24, 0, 0);
-    margin-bottom: 10px;
+    margin-bottom: 30px;
     border: none;
     border-bottom: 1px solid black;
     outline: none;
     background: transparent;
   }
   
-  .llink {
+  .slink {
     margin-top: 10px;
   }
   
-  .sbutt {
+  .butt {
     text-transform: uppercase;
     background-color: #ff497c;
     font-size: 16px;
     letter-spacing: 4px;
     text-decoration: none;
     color: rgb(255, 255, 255);
-    border: none;
-    border-radius: 5px;
     cursor: pointer;
     margin-top: 4px;
     padding: 10px;
     transition: 0.5s;
-    width: 70;
-    display: block;
-    margin: auto;
+    width: 100%;
   }
   
-  .sbutt:hover {
+  .butt:hover {
     transition: 0.5s;
     background: white;
     border-radius: 5px;
