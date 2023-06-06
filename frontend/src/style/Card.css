@@ -1,0 +1,62 @@
+.grid {
+    display: inline-flex;
+  }
+  
+  .grid-item {
+    background-color: #fff;
+    cursor: pointer;
+    transition: 0.2s;
+    width: 100%;
+    margin: 0.4in;
+    display: inline-flex;
+  }
+  
+  .grid-item:hover {
+    transform: translateY(-0.5%);
+    box-shadow: 0 4rem 8rem rgba(0, 0, 0, 0.5);
+  }
+  
+  .card-img {
+    width: 3in;
+    height: 2in;
+    object-fit: cover;
+  }
+  
+  .card-content {
+    padding: 15px;
+  }
+  
+  #hname {
+    text-transform: uppercase;
+  }
+  #hname:hover {
+    font-size: 0.3in;
+    text-transform: uppercase;
+  }
+  
+  #hprice {
+    color: #ff497c;
+  }
+  
+  .card-btn {
+    background-color: #ff497c;
+    color: white;
+    font-size: 16px;
+    transition: 0.5s;
+    margin: auto;
+    margin-top: 0.2in;
+    margin-bottom: 0.1in;
+    display: block;
+    border: none;
+    padding: 10px;
+    width: 1.5in;
+  }
+  
+  .card-btn:hover,
+  .card-btn:active {
+    transition: 0.5s;
+    background: white;
+    color: #ff497c;
+    border-radius: 5px;
+    box-shadow: 0 0 5px #ff497c, 0 0 5px #ff497c, 0 0 5px #ff497c, 0 0 5px #ff497c;
+  }

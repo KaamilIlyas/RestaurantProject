@@ -1,10 +1,9 @@
-import Signup from './Customer/Signup';
-import Login from './Customer/Login'
+import Home from "./Home";
 
 function App() {
-  return (
+   return (
     <>
-      <Login />
+      <Home />
     </>
   );
 }
