@@ -27,7 +27,7 @@ mongoose
 const app = express();
 app.use(express.json());
 app.use(cors());
-const port = 3003;
+const port = 3001;
 
 app.post("/api/register", async (req, res) => {
   try {
@@ -86,7 +86,7 @@ app.post("/api/givefeedbacks", async (req, res) => {
   }
 });
 
-//It will fetches all the dishes from the database and sends them back as a response
+//It will fetch all the dishes from the database and sends them back as a response
 app.get('/api/getDishes', async (req, res) => {
     try {
       const dishes = await Dish.find({}, { _id: 0 });
@@ -126,46 +126,3 @@ app.get('/api/getDishes', async (req, res) => {
 app.listen(port, () => {
   console.log(`Example app listening on port ${port}`);
 });
-
-
-app.post("/api/getUsers", async (req, res) => {
-  const result = await User.find({}, { _id: 0 })
-    .then((response) => {
-      res.send(response);
-    })
-    .catch({ message: "error" });
-});
-
-app.post("/api/blockUser", async (req, res) => {
-  await User.updateOne({ userid: req.body.userid }, { isBlock: true })
-    .then((response) => {
-      console.log(response);
-      res.send({ blocked: response.modifiedCount });
-    })
-    .catch((err) => {
-      res.send(err);
-    });
-});
-
-app.post("/api/unBlockUser", async (req, res) => {
-  await User.updateOne({ userid: req.body.userid }, { isBlock: false })
-    .then((response) => {
-      console.log(response);
-      res.send({ unblocked: response.modifiedCount });
-    })
-    .catch((err) => {
-      res.send(err);
-    });
-});
-
-app.post("/api/deleteUser", async (req, res) => {
-    const result = await User.deleteOne({
-      userid: req.body.userid,
-    });
-    if (result.deletedCount == 1) {
-      console.log("User deleted");
-    } else {
-      console.log("User not found");
-    }
-    res.send({ status: result });
-  });
