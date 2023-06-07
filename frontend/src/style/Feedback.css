@@ -1,0 +1,7 @@
+#Feedbackbox {
+    background-color: aliceblue;
+    border: 4px solid black;
+    margin: 1in;
+    height: 7in;
+    overflow: auto;
+  }

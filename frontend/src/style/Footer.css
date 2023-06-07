@@ -1,0 +1,46 @@
+.container {
+    display: flex;
+    background: #b6b6b6;
+    color: white;
+    font-size: 15px;
+    padding: 20px 15px;
+  }
+  
+  .col1,
+  .col2,
+  .col3,
+  .col4,
+  .col5 {
+    min-width: 250px;
+    margin-bottom: 30px;
+    margin: 0.2in;
+  }
+  
+  .container h1 {
+    color: white;
+  }
+  
+  .container hr {
+    border: none;
+    background: #474545;
+    height: 1px;
+    margin: 12px 0;
+  }
+  .col4 ul {
+    list-style: none;
+    padding: 3px;
+  }
+  
+  .col2,
+  .col3,
+  .copy {
+    text-align: center;
+  }
+  
+  #full {
+    background: #b6b6b6;
+    color: white;
+  }
+  .copy {
+    height: 0.7in;
+  }

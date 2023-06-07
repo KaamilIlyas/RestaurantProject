@@ -1,0 +1,40 @@
+.single_con {
+    border-bottom: 1px dotted black;
+    background-color: rgb(255, 255, 255);
+    padding-left: 10px;
+  }
+  .comArea {
+    height: 4in;
+    overflow: auto;
+  }
+  
+  .commentbox {
+    border: 2px solid;
+    padding: 10px;
+    margin: 1in;
+  }
+  
+  #enter {
+    margin-top: 0.3in;
+    display: block;
+    width: 100%;
+  }
+  
+  #comm {
+    background-color: #ff497c;
+    color: white;
+    font-size: 16px;
+    transition: 0.5s;
+    margin-top: 0.3in;
+    display: block;
+    border: none;
+    padding: 8px;
+  }
+  
+  #comm:hover {
+    transition: 0.5s;
+    background: white;
+    color: #ff497c;
+    border-radius: 5px;
+    box-shadow: 0 0 5px #ff497c, 0 0 5px #ff497c, 0 0 5px #ff497c, 0 0 5px #ff497c;
+  }

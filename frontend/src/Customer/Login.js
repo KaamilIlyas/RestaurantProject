@@ -28,7 +28,7 @@ const Login = () => {
     axios(options)
       .then((response) => {
         if (response.data.found) {
-          if (response.data.object.isBlock == false) {
+          if (response.data.object.isBlock === false) {
             navigate("../cust/home");
           } else {
             alert("ERROR");
