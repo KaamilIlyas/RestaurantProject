@@ -1,39 +1,63 @@
-import React from "react";
+import React, { useState } from "react";
 import "../style/Signup.css";
 import { Link } from "react-router-dom";
-import logo from "../images/logo.png";
-import { useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 
-const Signup = () => {
+const Signup = () => { 
+
   const [user, setUser] = useState({});
-  let navigate = useNavigate();
-  const handle = (e) => {
+  const [error, setError] = useState("");
+  const navigate = useNavigate();
+
+  const handleInputChange = (e) => {
     const { name, value } = e.target;
-    setUser({ ...user, [name]: value });
+    setUser((prevUser) => ({
+      ...prevUser,
+      [name]: value,
+    }));
   };
 
-  const SubmitHandler = () => {
-    const options = {
-      url: "http://localhost:3001/api/register",
-      method: "POST",
-      data: user,
+  const validateForm = () => {
+    if (!user.full_name || !user.email || !user.phone_number || !user.address || !user.password) {
+      setError("Please fill out all fields.");
+      return false;
+    }
+
+    const validateEmail = (email) => {
+      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      return emailRegex.test(email);
     };
-    axios(options)
-      .then((response) => {
-        console.log("Signed Up");
-        navigate("/Login");
-      })
-      .catch((err) => {
-        console.log(err);
-      });
+
+    if (!validateEmail(user.email)) {
+      setError("Please enter a valid email.");
+      return;
+    }
+
+    // if (!user.email.includes("@")) {
+    //   setError("Please enter a valid email address.");
+    //   return false;
+    // }
+
+    return true;
   };
+
+  const submitHandler = () => {
+    if (validateForm()) {
+      axios
+        .post("http://localhost:3001/api/register", user)
+        .then((response) => {
+          console.log("Signed Up");
+          navigate("/Login");
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    }
+  };
+
   return (
     <>
-      <div className=" head">
-        <img src={logo} alt="" />
-      </div>
       <div className="s-box">
         <h2>Signup</h2>
         <div className="sindiv">
@@ -42,7 +66,7 @@ const Signup = () => {
             type="text"
             value={user.full_name || ""}
             name="full_name"
-            onChange={handle}
+            onChange={handleInputChange}
             data-testid="fn-tid"
           />
 
@@ -51,7 +75,7 @@ const Signup = () => {
             type="email"
             value={user.email || ""}
             name="email"
-            onChange={handle}
+            onChange={handleInputChange}
           />
 
           <h5>Phone number</h5>
@@ -59,7 +83,7 @@ const Signup = () => {
             type="number"
             value={user.phone_number || ""}
             name="phone_number"
-            onChange={handle}
+            onChange={handleInputChange}
             data-testid="ph-tid"
           />
 
@@ -68,7 +92,7 @@ const Signup = () => {
             type="text"
             value={user.address || ""}
             name="address"
-            onChange={handle}
+            onChange={handleInputChange}
           />
 
           <h5>Password</h5>
@@ -76,17 +100,16 @@ const Signup = () => {
             type="password"
             value={user.password || ""}
             name="password"
-            onChange={handle}
+            onChange={handleInputChange}
           />
 
           <h5>Confirm Password</h5>
-          <input
-            type="password"
-            name="confirmPass"
-          />
+          <input type="password" name="confirmPass" />
+
+          {error && <p className="error">{error}</p>}
         </div>
 
-        <button className="sbutt" onClick={SubmitHandler}>
+        <button className="sbutt" onClick={submitHandler}>
           Submit
         </button>
         <div className="llink">

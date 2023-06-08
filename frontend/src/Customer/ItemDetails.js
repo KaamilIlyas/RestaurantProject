@@ -1,17 +1,38 @@
-import React from "react";
+import React, { useState } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "../style/IDetails.css";
-// import Dtems from "../Dishes";
 import { Link, useLocation } from "react-router-dom";
+import { toast, ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import ItemComments from "./ItemComments";
+
 const ItemDetails = () => {
   const { state } = useLocation();
-  let props = state.props;
+  let props = state?.props;
+
+  const [showComments, setShowComments] = useState(false);
+
+  if (!props) {
+    return <div>Loading...</div>;
+  }
+
+  const toggleComments = () => {
+    setShowComments(!showComments);
+  };
+
+  const addToCart = () => {
+    toast.success("Item has been added to the cart");
+  };
+
+  const addToWishlist = () => {
+    toast.success("Item has been added to the wishlist");
+  };
+
   return (
     <>
       <div id="product">
         <div className="product_images">
-          <img src={props.ipath} alt="Img not found Error 69" />
+          <img src={props.ipath} alt="Img not found Error " />
         </div>
         <div className="product_details">
           <div className="back">
@@ -45,18 +66,27 @@ const ItemDetails = () => {
             <li>unknown</li>
           </ul>
 
-          <Link href="">Clear Selection</Link>
-
           <div className="cta">
-            <div className="btn btn_primary">add to cart</div>
-            <div className="btn btn_outline_secondary">
-              <span className="material-symbols-outlined">favorite</span>add to
-              wishlist
+            <div className="btn btn_primary" onClick={addToCart}>
+              Add to Cart
             </div>
+            <div className="btn btn_outline_secondary" onClick={addToWishlist}>
+              <span className="material-symbols-outlined">favorite</span>
+              Add to Wishlist
+            </div>
+          </div>
+
+          <div className="comments-button">
+            <button className="btn btn_blue" onClick={toggleComments}>
+              Show Comments
+            </button>
           </div>
         </div>
       </div>
-      <ItemComments />
+
+      {showComments && <ItemComments />}
+
+      <ToastContainer position="top-right" autoClose={3000} />
     </>
   );
 };

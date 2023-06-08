@@ -13,17 +13,30 @@ const Header = () => {
             <img id="logo" src={logo} alt="" />
           </li>
           <li>
+            <NavLink to="Signup">register</NavLink>
+          </li>
+          {/* <li>
+            <NavLink to="Login">Login</NavLink>
+          </li> */}
+          <li>
             <NavLink to="Home">Home</NavLink>
           </li>
           <li>
             <NavLink to="Menu">Menu</NavLink>
           </li>
-          <li>
+          {/* <li>
             <NavLink to="lol">Offers</NavLink>
-          </li>
+          </li> */}
           <li>
             <NavLink to="Feedback">Feedback</NavLink>
           </li>
+          <li>
+            <NavLink to="ItemComments">ItemComments</NavLink>
+          </li>
+          {/* <li>
+            <NavLink to="ItemDetails">ItemDetails</NavLink>
+          </li> */}
+
         </ul>
       </div>
     </>

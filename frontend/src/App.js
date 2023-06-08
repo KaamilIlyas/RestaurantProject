@@ -1,9 +1,9 @@
-import Home from "./Home";
+import CustomerPannel from "./Customer/CustomerPannel";
 
 function App() {
    return (
     <>
-      <Home />
+      <CustomerPannel />
     </>
   );
 }

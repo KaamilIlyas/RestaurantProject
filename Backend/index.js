@@ -4,7 +4,6 @@ const mongoose = require("mongoose");
 const jwt = require('jsonwebtoken');
 const secretKey = '1234'; 
 
-
 const User = require("./Models/UserSchema");
 const Feedback = require("./Models/FeedbackSchema");
 const Dish = require("./Models/DishSchema");
@@ -52,26 +51,25 @@ app.post("/api/register", async (req, res) => {
 });
 
 app.post("/api/login", async (req, res) => {
-    try {
-      const user = await User.findOne({
-        full_name: req.body.full_name,
-        password: req.body.password,
+  try {
+    const user = await User.findOne({
+      email: req.body.email,
+      password: req.body.password,
+    });
+
+    if (user) {
+      const token = jwt.sign({ userId: user._id }, secretKey, {
+        expiresIn: '1h',
       });
-  
-      if (user) {
-        
-        const token = jwt.sign({ userId: user._id }, secretKey, {
-          expiresIn: '1h', 
-        });
-  
-        res.json({ success: true, token: token });
-      } else {
-        res.json({ success: false, message: 'Invalid credentials' });
-      }
-    } catch (error) {
-      res.json({ success: false, message: 'An error occurred' });
+
+      res.json({ success: true, token: token });
+    } else {
+      res.json({ success: false, message: 'Invalid Email or Password' });
     }
-  });
+  } catch (error) {
+    res.json({ success: false, message: 'An error occurred' });
+  }
+});
   
 
 app.post("/api/givefeedbacks", async (req, res) => {
